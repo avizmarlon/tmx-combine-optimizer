@@ -5,11 +5,45 @@ from tkinter.filedialog import askdirectory
 from time import sleep
 from clear_console import clear_console
 
+#
+#
+# todo
+# .> implement a function to write the resulting 
+#     data (output) to a txt file, for 
+#     further manipulation and better management
+#
+# .> make it GUI? (cmd line is so cool and comfortable to use though)
+#
+#
+#
+
+__author__ = "Marlon Aviz"
+clear_console()
+
 root = tkinter.Tk().withdraw()
 path = askdirectory(title="Select the folder that contains .TMX files")
 tmx_extension = '.tmx'
 contents = os.walk(path)
 srclangs = {}
+
+while True:
+	srclang_ref = input("""What should be the srclang value of the TMX files?
+eg1: EN-PT
+eg2: DE-ES
+etc.
+Note: Don't use quotes. Also: Case-sensitive
+Type 'q' to quit.
+
+~/> """)
+	if srclang_ref == 'q':
+		clear_console()
+		exit()
+	if '"' in srclang_ref or "'" in srclang_ref:
+		clear_console()
+		print("Please, don't use quotes. Try again.\n")
+		continue
+	else:
+		break
 
 clear_console()
 
@@ -45,7 +79,7 @@ sleep(4)
 for srclang in srclangs:
 	srclang_value = srclangs[srclang]
 	print("\nChecking srclangs values: " + srclang + " --> " + srclang_value)
-	if srclang_value != 'EN-GB':
+	if srclang_value != srclang_ref:
 		diverged_files[srclang] = srclang_value
 
 clear_console()
@@ -59,6 +93,6 @@ if len(diverged_files) > 0:
 		print("# srclang value: " + srclang_value)
 		print("================\n")
 else:
-	print("No files with srclang diverged. Nice :)")
+	print("All files with consistent srclang value. Nice :)")
 	sleep(3)
 	clear_console()
