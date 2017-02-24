@@ -51,14 +51,13 @@ for srclang in srclangs:
 clear_console()
 
 if len(diverged_files) > 0:
-	print("\n\nThe following files contain diverged srclang value: \n")
+	print("The following files contain diverged srclang value: \n")
 	sleep(3)
 	for diverged_file in diverged_files:
 		srclang_value = diverged_files[diverged_file]
-		print("================")
-		print("File path: " + diverged_file)
-		print("srclang value: " + srclang_value + "\n")
-		print("================")
+		print("# File path: " + diverged_file)
+		print("# srclang value: " + srclang_value)
+		print("================\n")
 else:
 	print("No files with srclang diverged. Nice :)")
 	sleep(3)
