@@ -2,8 +2,8 @@ import re
 import os
 import tkinter
 from tkinter.filedialog import askdirectory
-from clear_console import clear_console
 from time import sleep
+from clear_console import clear_console
 
 root = tkinter.Tk().withdraw()
 path = askdirectory(title="Select the folder that contains .TMX files")
