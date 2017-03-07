@@ -58,8 +58,10 @@ for dirpath, dirname, filename in contents:
 				xcode = re.findall('\Sx[0-9a-z]+', line) # finds all occurences of hex text code
 				if len(xcode) > 0:
 					for match in xcode:
-						line = line.replace(''.join(match), '') # removes the hext text code, leaving only the actual text
+						# removes the hex text code (\x00n, etc.), leaving only the actual text
+						line = line.replace(''.join(match), '')
 				print("\nSearching line />>> " + line)
+				
 				# if we find the line with srclang value, harvest it,
 				# put it into our srclangs database and jump to the next file in the loop
 				# otherwise, go to the next line and just keep searching for the srclang attribute
@@ -70,8 +72,8 @@ for dirpath, dirname, filename in contents:
 				else:
 					continue
 
-# checks if there is any srclang with a value different from 'EN-GB'
-# and prints it out for us to see
+# checks if there is any srclang with a value different from the one defined by the user
+# and prints it out for the user to see
 clear_console()
 diverged_files = {}
 print("Finished analyzing all files. Now I'll analyze every srclang. Hold on.")
