@@ -4,6 +4,6 @@ This is for people (mostly translators) that need to combine multiple TMX files 
 
 ### What does it do?
 
-This script looks for all .tmx files in set of folders and subfolders and analyze all of them to find the srclang attribute of the header tag.
+This script looks for all .tmx files in a set of folders and subfolders and analyze all of them to find the srclang attribute of the header tag.
 
 Then it will check if all srclang values are consistent with each other.
